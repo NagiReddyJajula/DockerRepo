@@ -1,4 +1,7 @@
 FROM openjdk:8
-ADD  build/dist/SpringBoot_Docker.jar SpringBoot_Docker.jar
+RUN mkdir -p /opt
+WORKDIR /opt
+COPY /SpringBoot_Docker/* /opt
+ADD  /opt/target/SpringBoot_Docker.jar SpringBoot_Docker.jar
 EXPOSE 8085
 ENTRYPOINT ["java","-jar","SpringBoot_Docker.jar"]
